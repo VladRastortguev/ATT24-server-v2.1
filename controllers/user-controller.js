@@ -180,7 +180,9 @@ class UserController {
 
     async getSoglCreate1cAA6(req, res, next) {
         try {
-            const res = await userService.getSoglCreate1cSogl(req.params.taskuid, req.params.usernumber, req.params.soglnumber)
+            const responce = await userService.getSoglCreate1cSogl(req.params.taskuid, req.params.usernumber, req.params.soglnumber)
+        
+            return res.redirect(process.env.CLIENT_URL);
         } catch (e) {
             next(e)
         }
