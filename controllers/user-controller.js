@@ -182,7 +182,7 @@ class UserController {
         try {
             const responce = await userService.getSoglCreate1cSogl(req.params.taskuid, req.params.usernumber, req.params.soglnumber)
         
-            return res.redirect(process.env.CLIENT_URL);
+            return res.redirect(`${process.env.CLIENT_URL}/sogl/${req.params.soglnumber}`);
         } catch (e) {
             next(e)
         }
