@@ -9,17 +9,45 @@ class UserController {
     async registration(req, res, next) {
         try {
             const errors = validationResult(req);
-
+            let allowIndex = 0;
+            
             if (!errors.isEmpty()) {
                 return next(ApiError.BadRequest('Ошибка при валидции!', errors.array()));
             }
 
+            const allowEmail = [
+                'altyntulpar.kg',
+                'toyota-bishkek.kg',
+                'kia-bishkek.kg',
+                'bmw-center.kg',
+                'lkwcenter.kg',
+                'automall.kg',
+                'haval.kg',
+                'bakr.kg',
+                'toyota-royalmotors.uz',
+                'happyhome.kz'
+            ]
+            
             const {email, password} = req.body;
-            const userData = await userService.registration(email, password);
 
-            res.cookie('refreshToken', userData.refreshToken, {maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true} );
+            let validationStr = String(email).split('@')[1]
 
-            return res.json(userData);
+            for (let i in allowEmail) {
+                if (validationStr == allowEmail[i]) {
+                    allowIndex += 1
+                }
+            }
+
+            if (allowIndex > 0) {
+                const userData = await userService.registration(email, password);
+    
+                res.cookie('refreshToken', userData.refreshToken, {maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true} );
+    
+                return res.json(userData);
+            } else {
+                return next(ApiError.BadRequest('Ошибка при валидации!'))
+            }
+
         } catch (e) {
             next(e);
         }
