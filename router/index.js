@@ -24,6 +24,7 @@ router.get('/getcomment/:uid/:tasktype',  userController.getComment);
 router.get('/getonetask/:uid/:tasktype',  userController.getOneTask);
 router.post('/setcomment/:uid/:tasktype', userController.setComment);
 router.get('/getalltask/:email',          userController.getAllTask);
+router.get('/getallemail/:email',         userController.getAllEmail);
 
 router.get('/createonessogl/:taskuid/:usernumber/:soglnumber', userController.getSoglCreate1cAA6)
 

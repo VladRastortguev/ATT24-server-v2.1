@@ -12,6 +12,7 @@ const itiluserShema = require('../models/itil-model');
 const oneCompanyItil = require('../models/company-itil-model');
 const commentModel = require('../models/comment-model');
 const oneTaskModel = require('../models/oneTask-model');
+const allEmail = require('../models/email-model');
 
 class UserSevice {
     async registration(email, password) {
@@ -248,6 +249,23 @@ class UserSevice {
         } catch (e) {
             return e
         }
+    }
+
+    async getAllEmail(email) {
+        const oneEmail = await axios.get(`${process.env.API_ITIL}/getallemail/${email}`, {
+            auth: {
+                username: 'WebInterface',
+                password: '90nexuB'
+            }
+        })
+        
+        if (oneEmail.data !== null) {
+            return oneEmail.data.map(oneEmail => new allEmail(oneEmail.email))
+        } else {
+            return []
+        }
+
+        
     }
 
     async getSoglCreate1cSogl(uid, userNumber, soglnumber) {
