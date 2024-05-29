@@ -206,6 +206,16 @@ class UserController {
         }
     }
 
+    async getAllEmail(req, res, next) {
+        try {
+            const allEmail = await userService.getAllEmail(req.params.email)
+        
+            return res.json(allEmail)
+        } catch (e) {
+            next(e)
+        }
+    }
+
     async getSoglCreate1cAA6(req, res, next) {
         try {
             const responce = await userService.getSoglCreate1cSogl(req.params.taskuid, req.params.usernumber, req.params.soglnumber)
