@@ -216,6 +216,16 @@ class UserController {
         }
     }
 
+    async getAA6(req, res, next) {
+        try {
+            const AA6Succes = await userService.getAA6(req.params.email)
+
+            return res.json(AA6Succes)
+        } catch (e) {
+            next(e)
+        }
+    }
+
     async getSoglCreate1cAA6(req, res, next) {
         try {
             const responce = await userService.getSoglCreate1cSogl(req.params.taskuid, req.params.usernumber, req.params.soglnumber)
