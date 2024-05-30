@@ -263,9 +263,22 @@ class UserSevice {
             return oneEmail.data.map(oneEmail => new allEmail(oneEmail.email))
         } else {
             return []
-        }
+        }        
+    }
 
-        
+    async getAA6(email) {
+        const AA6Succes = await axios.get(`${process.env.API_ITIL}/getaa6users/${email}`, {
+            auth: {
+                username: 'WebInterface',
+                password: '90nexuB'
+            }
+        })
+
+        if (AA6Succes.data !== null) {
+            return AA6Succes.data.map(oneUser => new allEmail(oneUser))
+        } else {
+            return []
+        }
     }
 
     async getSoglCreate1cSogl(uid, userNumber, soglnumber) {
