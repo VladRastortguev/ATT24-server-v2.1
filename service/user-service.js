@@ -61,6 +61,7 @@ class UserSevice {
 
         user.isActivated = true;
         user.admin = 2;
+        
         await user.save();
     }
 
