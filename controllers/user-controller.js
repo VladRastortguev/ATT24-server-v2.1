@@ -25,7 +25,8 @@ class UserController {
                 'haval.kg',
                 'bakr.kg',
                 'toyota-royalmotors.uz',
-                'happyhome.kz'
+                'happyhome.kz',
+                'byd-rm.uz'
             ]
             
             const {email, password} = req.body;
@@ -83,7 +84,9 @@ class UserController {
     async activate1(req, res, next) {
         try {
             const activationLink = req.params.link;
+
             await userService.activate1(activationLink);
+            
             return res.redirect(process.env.CLIENT_URL);
         } catch (e) {
             next(e);
