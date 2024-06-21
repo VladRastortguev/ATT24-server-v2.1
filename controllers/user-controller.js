@@ -238,6 +238,16 @@ class UserController {
             next(e)
         }
     }
+
+    async getDataloreItil(req, res, next) {
+        try {
+            const responce = await userService.getDataloreItil()
+
+            return res.json(responce)
+        } catch (e) {
+            next(e)
+        }
+    }
 }
 
 module.exports = new UserController();

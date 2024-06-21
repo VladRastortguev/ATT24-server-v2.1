@@ -29,4 +29,6 @@ router.get('/getaa6/:email',              userController.getAA6)
 
 router.get('/createonessogl/:taskuid/:usernumber/:soglnumber', userController.getSoglCreate1cAA6)
 
+router.get('/datalore', userController.getDataloreItil)
+
 module.exports = router

@@ -13,6 +13,7 @@ const oneCompanyItil = require('../models/company-itil-model');
 const commentModel = require('../models/comment-model');
 const oneTaskModel = require('../models/oneTask-model');
 const allEmail = require('../models/email-model');
+const dataloreItil = require('../models/dataloreItil-model');
 
 class UserSevice {
     async registration(email, password) {
@@ -290,6 +291,21 @@ class UserSevice {
                     password: '90nexuB'
                 }
             })
+        } catch (e) {
+            return e
+        }
+    }
+
+    async getDataloreItil() {
+        try {
+            const res = await axios.get(`${process.env.API_ITIL}/datalore`, {
+                auth: {
+                    username: 'WebInterface',
+                    password: '90nexuB'
+                }
+            })
+
+            return res.data.map((oneDataloreItem) => new dataloreItil(oneDataloreItem.loreName, oneDataloreItem.loreDescr, oneDataloreItem.lorePng, oneDataloreItem.lorePR))
         } catch (e) {
             return e
         }
