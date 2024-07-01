@@ -29,6 +29,7 @@ class UserController {
                 'happyhome.kz',
                 'byd-rm.uz',
                 'ducati.uz',
+                'lexus-bishkek.kg'
             ]
             
             const {email, password} = req.body;
