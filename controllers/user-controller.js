@@ -17,7 +17,6 @@ class UserController {
 
             const allowEmail = [
                 'altyntulpar.kg',
-                'altyntulpar.com',
                 'toyota-bishkek.kg',
                 'kia-bishkek.kg',
                 'bmw-center.kg',
@@ -25,11 +24,13 @@ class UserController {
                 'automall.kg',
                 'haval.kg',
                 'bakr.kg',
-                'toyota-royalmotors.uz',
                 'happyhome.kz',
-                'byd-rm.uz',
+                'lexus-bishkek.kg',
+                'altyntulpar.com',
+                'toyota-royalmotors.uz',
                 'ducati.uz',
-                'lexus-bishkek.kg'
+                'byd-rm.uz',
+                'royalmotors.uz'
             ]
             
             const {email, password} = req.body;
