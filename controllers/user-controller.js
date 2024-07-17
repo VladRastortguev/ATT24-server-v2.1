@@ -30,7 +30,8 @@ class UserController {
                 'toyota-royalmotors.uz',
                 'ducati.uz',
                 'byd-rm.uz',
-                'royalmotors.uz'
+                'royalmotors.uz',
+                'geely.kg'
             ]
             
             const {email, password} = req.body;
