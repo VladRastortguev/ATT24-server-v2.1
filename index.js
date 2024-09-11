@@ -5,10 +5,12 @@ const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose')
 const router = require('./router/index')
 const errorMiddlewaer = require('./middlewaers/error-middlewaer')
+const bodyParser = require('body-parser')
 
 const PORT = process.env.PORT || 5000;
 const app = express()
 
+app.use(bodyParser.json({ limit: '30mb' }))
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
